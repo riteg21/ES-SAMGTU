@@ -1,0 +1,55 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - REACT_APP_BACKEND_URL=
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    networks:
+      - samgtu_es
+
+  backend:
+    build: 
+      context: ./backend
+    environment:
+      FRONTEND_URLS: "http://localhost"
+      DB_HOST: es-db
+      DB_PORT: 5432
+      DB_NAME: es
+      DB_USERNAME: esapp
+      DB_PASSWORD: espassword
+    depends_on:
+      - es-db
+    networks:
+      - samgtu_es
+  
+  es-db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: es
+      POSTGRES_USERNAME: esapp
+      POSTGRES_PASSWORD: espassword
+    volumes:
+      - ./init-scripts/es-db-init.sql:/docker-entrypoint-initdb.d/es-db-init.sql
+      - es-db-data:/var/lib/postgresql/data
+    networks:
+      - samgtu_es
+  nginx:
+    image: nginx:1.26.3
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - samgtu_es
+  
+networks:
+  samgtu_es:
+
+volumes:
+  es-db-data:

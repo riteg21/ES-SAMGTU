@@ -10,7 +10,7 @@ export const Quiz = () => {
   useEffect(() => {
     const FetchDataQuiz = async () => {
       try {
-        const response = await fetch("http://localhost:80/api/questions");
+        const response = await fetch("/api/questions");
         console.log(response);
         if (!response.ok) throw new Error("Failed to fetch data");
         const data = await response.json();

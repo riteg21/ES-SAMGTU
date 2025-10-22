@@ -8,4 +8,13 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:80",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

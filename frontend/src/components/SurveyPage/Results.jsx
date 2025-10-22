@@ -23,7 +23,7 @@ export const Results = ({ scores }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("src/data/cardOfDirection.json");
+        const response = await fetch("/data/cardOfDirection.json");
         if (!response.ok) throw new Error("Failed to response");
         const data = await response.json();
         setDirections(data);

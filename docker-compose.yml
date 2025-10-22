@@ -3,19 +3,21 @@ services:
     build:
       context: ./frontend
       args:
-        - REACT_APP_BACKEND_URL=
+        - VITE_BACKEND_URL=http://backend:8080
     environment:
       - NODE_ENV=production
+    ports:
+      - "3000:3000"
     depends_on:
       - backend
     networks:
       - samgtu_es
 
   backend:
-    build: 
+    build:
       context: ./backend
     environment:
-      FRONTEND_URLS: "http://localhost"
+      FRONTEND_URLS: "http://localhost:3000"
       DB_HOST: es-db
       DB_PORT: 5432
       DB_NAME: es
@@ -25,7 +27,7 @@ services:
       - es-db
     networks:
       - samgtu_es
-  
+
   es-db:
     image: postgres:17
     environment:
@@ -45,9 +47,10 @@ services:
       - "80:80"
     depends_on:
       - backend
+      - frontend
     networks:
       - samgtu_es
-  
+
 networks:
   samgtu_es:
 

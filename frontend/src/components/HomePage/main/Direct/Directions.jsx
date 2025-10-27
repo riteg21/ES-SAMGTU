@@ -9,7 +9,7 @@ export const Directions = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data/cardOfDirection.json");
+        const response = await fetch("/api/directions");
         if (!response.ok) throw new Error("Failed to response");
         const data = await response.json();
         setDirections(data);
@@ -33,7 +33,7 @@ export const Directions = () => {
             image={s.image}
             name={s.name}
             code={s.number}
-            url={s.url}
+            url={s.imageUrl}
           />
         ))}
       </div>

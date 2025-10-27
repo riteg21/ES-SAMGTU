@@ -4,22 +4,46 @@ import { Link } from "react-router-dom";
 import { Results } from "./Results";
 
 export const Quiz = () => {
-  const [quizData, setQuizData] = useState(null);
+  const [quizData, setQuizData] = useState([]);
+  const [directions, setDirections] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const FetchDataQuiz = async () => {
+    const FetchAllQuestions = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/questions");
-        console.log(response);
-        if (!response.ok) throw new Error("Failed to fetch data");
-        const data = await response.json();
-        setQuizData(data);
+        const allQuestions = [];
+        let page = 0;
+        let totalPages = 1;
+        while (page < totalPages) {
+          const response = await fetch(`/api/question?questionNumber=${page}`);
+          if (!response.ok) throw new Error("Failed to fetch data");
+          const data = await response.json();
+
+          allQuestions.push(...data.content);
+          totalPages = data.totalPages;
+          page++;
+        }
+        setQuizData(allQuestions);
       } catch (error) {
         setError(true);
       }
     };
-    FetchDataQuiz();
+
+    FetchAllQuestions();
+  }, []);
+
+  useEffect(() => {
+    const FetchDataDirections = async () => {
+      try {
+        const response = await fetch("/api/directions");
+        if (!response.ok) throw new Error("Failed to fetch data");
+        const data = await response.json();
+        setDirections(data);
+      } catch (error) {
+        setError(true);
+      }
+    };
+    FetchDataDirections();
   }, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -27,19 +51,21 @@ export const Quiz = () => {
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    if (quizData?.directions) {
+    if (directions?.id) {
       const initialScores = {};
-      Object.keys(quizData.directions).forEach((key) => {
+      Object.keys(directions.id).forEach((key) => {
         initialScores[key] = 0;
       });
       setScores(initialScores);
     }
-  }, [quizData]);
+  }, [directions]);
 
-  const questions = quizData?.questions || [];
+  const questions = quizData || [];
   const currentQuestionData = questions[currentQuestion];
 
-  const progress = Math.round(((currentQuestion + 1) / questions.length) * 100);
+  const progress =
+    questions.length > 0 ? Math.round(((currentQuestion + 1) / 15) * 100) : 0;
+
   const handleAnswerSelect = (answerIndex) => {
     const selectedAnswer = currentQuestionData.answers[answerIndex];
 
@@ -57,7 +83,7 @@ export const Quiz = () => {
   };
 
   if (error) {
-    return <Link to={"/404"} />;
+    return <div>Ошибка загрузки данных</div>;
   }
 
   if (isCompleted) {
@@ -69,7 +95,7 @@ export const Quiz = () => {
       <div className="max-w-3xl mx-auto">
         <div className="flex justify-between text-gray-600 mb-2">
           <h4 className="font-medium text-xs sm:text-sm md:text-base">
-            Вопрос {currentQuestion + 1} из {questions.length}
+            Вопрос {currentQuestion + 1} из 15
           </h4>
           <h4 className="font-medium text-xs sm:text-sm md:text-base">
             {progress}%

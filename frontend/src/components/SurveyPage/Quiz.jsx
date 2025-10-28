@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Question } from "./Question";
-import { Link } from "react-router-dom";
 import { Results } from "./Results";
 
 export const Quiz = () => {
@@ -12,8 +11,8 @@ export const Quiz = () => {
     const FetchAllQuestions = async () => {
       try {
         const allQuestions = [];
-        let page = 0;
-        let totalPages = 1;
+        let page = 1;
+        let totalPages = 15;
         while (page < totalPages) {
           const response = await fetch(`/api/question?questionNumber=${page}`);
           if (!response.ok) throw new Error("Failed to fetch data");
@@ -74,6 +73,8 @@ export const Quiz = () => {
       newScores[direction] = (newScores[direction] || 0) + score;
     });
     setScores(newScores);
+
+    console.log(scores);
 
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);

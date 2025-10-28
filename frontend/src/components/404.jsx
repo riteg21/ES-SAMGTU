@@ -1,3 +1,7 @@
 export const Error404 = () => {
-  return <div>404</div>;
+  return (
+    <div className="flex justify-center">
+      <div>sedc</div>
+    </div>
+  );
 };

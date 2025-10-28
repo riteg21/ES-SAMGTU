@@ -3,17 +3,17 @@ import { DirectionItem } from "../HomePage/main/Direct/DirectionItem";
 import { Link } from "react-router-dom";
 
 const directionCodeMap = {
-  ПМ: "01.03.02",
-  ИВТ: "09.03.01",
-  РИС: "09.03.02",
-  ПИнф: "09.03.03",
-  ПИ: "09.03.04",
-  ИБ: "10.03.01",
-  РТ: "11.03.01",
-  ПБ: "12.03.01",
-  АТ: "15.03.04",
-  САУ: "27.03.03",
-  УТС: "27.03.04",
+  1: "01.03.02",
+  2: "09.03.01",
+  3: "09.03.02",
+  4: "09.03.03",
+  5: "09.03.04",
+  6: "10.03.01",
+  7: "11.03.01",
+  8: "12.03.01",
+  9: "15.03.04",
+  10: "27.03.03",
+  11: "27.03.04",
 };
 
 export const Results = ({ scores }) => {
@@ -23,7 +23,7 @@ export const Results = ({ scores }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data/cardOfDirection.json");
+        const response = await fetch("/api/directions");
         if (!response.ok) throw new Error("Failed to response");
         const data = await response.json();
         setDirections(data);

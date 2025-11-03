@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { DirectionItem } from "../HomePage/main/Direct/DirectionItem";
 import { Link } from "react-router-dom";
+import { useScore } from "../../context/ScoreForResultsContext";
 
 const directionCodeMap = {
   1: "01.03.02",
@@ -16,7 +17,9 @@ const directionCodeMap = {
   11: "27.03.04",
 };
 
-export const Results = ({ scores }) => {
+export const Results = () => {
+  const { score } = useScore();
+
   const [directions, setDirections] = useState([]);
   const [error, setError] = useState(false);
 
@@ -38,10 +41,10 @@ export const Results = ({ scores }) => {
   }
 
   const sortedDirections = useMemo(() => {
-    return Object.entries(scores)
+    return Object.entries(score)
       .sort(([, scoreA], [, scoreB]) => scoreB - scoreA)
       .map(([key]) => key);
-  }, [scores]);
+  }, [score]);
 
   const topDirections = sortedDirections.slice(0, 3);
 
@@ -65,10 +68,13 @@ export const Results = ({ scores }) => {
             className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
           />
         </div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-700 mb-3 lg:mb-4">
+        <h1 className="hidden sm:text-xl lg:text-3xl font-bold text-gray-700 mb-3 lg:mb-4">
           Поздравляем!
         </h1>
 
+        <h2 className="lg:hidden sm:hidden font-bold text-gray-700 mb-3 text-3xl">
+          Поздравляем!
+        </h2>
         <p className="mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg font-normal text-gray-500 md:text-xl px-2 sm:px-0">
           На основе вашего опроса мы определили идеальные направления для
           поступления на ИАИТ. Эти рекомендации учитывают ваши интересы, сильные

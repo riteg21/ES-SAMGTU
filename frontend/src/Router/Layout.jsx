@@ -11,16 +11,16 @@ export const Layout = () => {
     <div className="w-full min-h-screen flex flex-col" ref={headerRef}>
       {!isHomePage && (
         <div className="flex flex-col min-h-screen">
-          <header className="flex items-center justify-center px-4 py-1 sm:px-6 lg:px-40 lg:py-4 lg:justify-between bg-white">
+          <header className="flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-40 lg:justify-between bg-white">
             <Link to={"/"}>
               <img
                 src="/logo.svg"
                 alt="Логотип"
-                className="w-25 h-25 sm:w-10 sm:h-10 lg:w-auto lg:h-auto"
+                className="w-32 h-24 sm:w-36 sm:h-27 md:w-40 md:h-30 lg:w-48 lg:h-35"
               />
             </Link>
 
-            <div className="hidden md:flex space-x-6 lg:space-x-10 text-gray-500 font-medium">
+            <div className="hidden lg:flex space-x-6 lg:space-x-10  text-gray-500 font-medium">
               <a
                 href="https://samgtu.ru/bachelors/bachelors-faculty-iait"
                 className="duration-200 ease-in hover:text-gray-700 transition-colors"
@@ -44,11 +44,11 @@ export const Layout = () => {
             <div className="mx-auto w-full max-w-screen-xl">
               <div className="px-4 py-6 lg:py-8">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-8">
-                  <div className="flex-shrink-0 me-8">
+                  <div className="flex justify-center lg:justify-center">
                     <img
                       src="/logo.svg"
                       alt="Логотип СамГТУ"
-                      className="w-30 h-30 md:w-30 md:h-30"
+                      className="w-40 h-30 sm:w-34 sm:h-18 lg:w-40 lg:h-20 lg:me-10"
                     />
                   </div>
 

@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { Question } from "./Question";
 import { Results } from "./Results";
+import { Link, useNavigate } from "react-router-dom";
+import { useScore } from "../../context/ScoreForResultsContext";
 
 export const Quiz = () => {
   const [quizData, setQuizData] = useState([]);
   const [directions, setDirections] = useState(null);
   const [error, setError] = useState(false);
+
+  const navigateToResult = useNavigate();
+  const { scoreHandler, score } = useScore();
 
   useEffect(() => {
     const FetchAllQuestions = async () => {
@@ -88,7 +93,9 @@ export const Quiz = () => {
   }
 
   if (isCompleted) {
-    return <Results scores={scores} />;
+    scoreHandler(scores);
+    navigateToResult("/result");
+    return null;
   }
 
   return (

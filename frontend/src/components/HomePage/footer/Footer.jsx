@@ -4,11 +4,11 @@ export const Footer = () => {
       <div className="mx-auto w-full max-w-screen-xl">
         <div className="px-4 py-6 lg:py-8">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-8">
-            <div className="flex-shrink-0 me-8">
+            <div className="flex justify-center lg:justify-center">
               <img
                 src="/logo.svg"
                 alt="Логотип СамГТУ"
-                className="w-30 h-30 md:w-30 md:h-30"
+                className="w-40 h-30 sm:w-34 sm:h-18 lg:w-40 lg:h-20 lg: me-10"
               />
             </div>
 

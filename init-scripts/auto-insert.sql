@@ -1,15 +1,15 @@
 INSERT INTO directions (id, name, number, url, imageurl) VALUES
-(1, 'Прикладная математика и информатика', '01.03.02', 'https://samgtu.ru/speciality/bakalavriat-prikladnaya-matematika-i-informatika?f=iait', '/01.03.02.jpg'),
-(2, 'Информатика и вычислительная техника', '09.03.01', 'https://samgtu.ru/specialization/bachelors-avtomatizirovannye-sistemy-obrabotki-informacii-i-upravleniya?f=iait', '/09.03.01.jpg'),
-(3, 'Информационные системы и технологии', '09.03.02', 'https://samgtu.ru/specialization/information-systems-and-technologies-bachelor-degree?f=iait', '/09.03.02.webp'),
-(4, 'Прикладная информатика', '09.03.03', 'https://samgtu.ru/speciality/bakalavriat-prikladnaya-informatika?f=iait', '/09.03.01.jpg'),
-(5, 'Программная инженерия', '09.03.04', 'https://samgtu.ru/specialization/bachelors-programmnaya-inzheneriya?f=iait', '/09.03.01.jpg'),
-(6, 'Информационная безопасность', '10.03.01', 'https://samgtu.ru/speciality/bakalavriat-informatsionnaya-bezopasnost?f=iait', '/09.03.01.jpg'),
-(7, 'Радиотехника', '11.03.01', 'https://samgtu.ru/specialization/bachelors-radioelektronnye-sredstva-v-sistemah-bezopasnosti?f=iait', '/09.03.01.jpg'),
-(8, 'Приборостроение', '12.03.01', 'https://samgtu.ru/specialization/bachelors-informacionno-izmeritelnaya-tehnika-i-tehnologii?f=iait', '/09.03.01.jpg'),
-(9, 'Автоматизация технологических процессов и производств', '15.03.04', 'https://samgtu.ru/specialization/bakalavriat-automation-technological-processes-and-production?f=iait', '/09.03.01.jpg'),
-(10, 'Системный анализ и управление', '27.03.03', 'https://samgtu.ru/speciality/bakalavriat-sistemnii-analiz-i-upravlenie?f=iait', '/09.03.01.jpg'),
-(11, 'Управление в технических системах', '27.03.04', 'https://samgtu.ru/speciality/bakalavriat-upravlenie-v-tehnicheskih-sistemah?f=iait', '/09.03.01.jpg');
+(1, 'Прикладная математика и информатика', '01.03.02', 'https://samgtu.ru/speciality/bakalavriat-prikladnaya-matematika-i-informatika?f=iait', '/directionsPhoto/01.03.02.webp'),
+(2, 'Информатика и вычислительная техника', '09.03.01', 'https://samgtu.ru/specialization/bachelors-avtomatizirovannye-sistemy-obrabotki-informacii-i-upravleniya?f=iait', '/directionsPhoto/09.03.01.webp'),
+(3, 'Информационные системы и технологии', '09.03.02', 'https://samgtu.ru/specialization/information-systems-and-technologies-bachelor-degree?f=iait', '/directionsPhoto/09.03.02.webp'),
+(4, 'Прикладная информатика', '09.03.03', 'https://samgtu.ru/speciality/bakalavriat-prikladnaya-informatika?f=iait', '/directionsPhoto/09.03.03.webp'),
+(5, 'Программная инженерия', '09.03.04', 'https://samgtu.ru/specialization/bachelors-programmnaya-inzheneriya?f=iait', '/directionsPhoto/09.03.04.webp'),
+(6, 'Информационная безопасность', '10.03.01', 'https://samgtu.ru/speciality/bakalavriat-informatsionnaya-bezopasnost?f=iait', '/directionsPhoto/10.03.01.webp'),
+(7, 'Радиотехника', '11.03.01', 'https://samgtu.ru/specialization/bachelors-radioelektronnye-sredstva-v-sistemah-bezopasnosti?f=iait', '/directionsPhoto/11.03.01.webp'),
+(8, 'Приборостроение', '12.03.01', 'https://samgtu.ru/specialization/bachelors-informacionno-izmeritelnaya-tehnika-i-tehnologii?f=iait', '/directionsPhoto/12.03.01.webp'),
+(9, 'Автоматизация технологических процессов и производств', '15.03.04', 'https://samgtu.ru/specialization/bakalavriat-automation-technological-processes-and-production?f=iait', '/directionsPhoto/15.03.04.webp'),
+(10, 'Системный анализ и управление', '27.03.03', 'https://samgtu.ru/speciality/bakalavriat-sistemnii-analiz-i-upravlenie?f=iait', '/directionsPhoto/27.03.03.webp'),
+(11, 'Управление в технических системах', '27.03.04', 'https://samgtu.ru/speciality/bakalavriat-upravlenie-v-tehnicheskih-sistemah?f=iait', '/directionsPhoto/27.03.04.webp');
 
 INSERT INTO questions (id, question_text) VALUES
 (1, 'Какой школьный предмет или область знаний давались тебе легче всего и были наиболее интересны?'),

@@ -68,11 +68,11 @@ export const Results = () => {
             className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
           />
         </div>
-        <h1 className="hidden sm:text-xl lg:text-3xl font-bold text-gray-700 mb-3 lg:mb-4">
-          Поздравляем!
-        </h1>
-
-        <h2 className="lg:hidden sm:hidden font-bold text-gray-700 mb-3 text-3xl">
+        <h2
+          className="text-xl font-bold text-gray-700 mb-3 
+               sm:text-2xl 
+               lg:text-3xl lg:mb-10"
+        >
           Поздравляем!
         </h2>
         <p className="mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg font-normal text-gray-500 md:text-xl px-2 sm:px-0">
@@ -90,11 +90,11 @@ export const Results = () => {
         {topDirectionItems.map((directionItem, index) => (
           <div
             key={index}
-            className="w-full sm:w-auto sm:flex-1 max-w-sm lg:max-w-none"
+            className="w-full sm:w-auto sm:flex max-w-sm lg:max-w-none"
           >
             <DirectionItem
               id={index}
-              image={directionItem.image}
+              image={directionItem.imageURL}
               name={directionItem.name}
               code={directionItem.number}
               url={directionItem.url}

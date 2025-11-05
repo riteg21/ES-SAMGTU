@@ -30,7 +30,7 @@ export const Directions = () => {
           <DirectionItem
             key={s.id}
             id={s.id}
-            image={s.image}
+            image={s.imageURL}
             name={s.name}
             code={s.number}
             url={s.url}

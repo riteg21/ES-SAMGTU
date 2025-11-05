@@ -55,7 +55,7 @@ export const FindYourFuture = () => {
           </h6>
         </div>
 
-        <div className="flex-1 w-full mt-8 sm:mt-10 lg:mt-0">
+        <div className="hidden sm:flex flex-1 w-full mt-8 sm:mt-10 lg:mt-0">
           <img
             src="/study.svg"
             alt="Students"

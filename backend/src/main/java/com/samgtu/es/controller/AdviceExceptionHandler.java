@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.samgtu.es.exception.GoogleSheetsException;
 import com.samgtu.es.exception.NotFoundException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestControllerAdvice
 public class AdviceExceptionHandler {
+    
+    @ExceptionHandler(GoogleSheetsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String googleSheetsException(GoogleSheetsException ex)
+    {
+        log.error("GoogleSheets error: {}", ex.getMessage());
+        return ex.getMessage();
+    }
+
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFoundException(NotFoundException ex)

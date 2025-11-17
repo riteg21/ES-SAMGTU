@@ -18,27 +18,14 @@ services:
       context: ./backend
     environment:
       FRONTEND_URLS: "http://localhost"
-      DB_HOST: es-db
-      DB_PORT: 5432
-      DB_NAME: es
-      DB_USERNAME: esapp
-      DB_PASSWORD: espassword
-    depends_on:
-      - es-db
+      SPREADSHEET_ID: ${SPREADSHEET_ID}
+      ACCOUNT_KEY_FILE: ${ACCOUNT_KEY_FILE}
+      ACCOUNT_KEY_PATH: ${ACCOUNT_KEY_PATH}
+    volumes:
+      - ./${ACCOUNT_KEY_PATH}/${ACCOUNT_KEY_FILE}:/app/${ACCOUNT_KEY_PATH}/${ACCOUNT_KEY_FILE}
     networks:
       - samgtu_es
 
-  es-db:
-    image: postgres:17
-    environment:
-      POSTGRES_DB: es
-      POSTGRES_USERNAME: esapp
-      POSTGRES_PASSWORD: espassword
-    volumes:
-      - ./init-scripts/es-db-init.sql:/docker-entrypoint-initdb.d/es-db-init.sql
-      - es-db-data:/var/lib/postgresql/data
-    networks:
-      - samgtu_es
   nginx:
     image: nginx:1.26.3
     volumes:
@@ -52,6 +39,3 @@ services:
 
 networks:
   samgtu_es:
-
-volumes:
-  es-db-data:

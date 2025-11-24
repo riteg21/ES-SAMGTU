@@ -13,22 +13,6 @@ export const ScoreToResultProvider = ({ children }) => {
     setScore(score);
   };
 
-  const scoreToDB = async () => {
-    const response = await fetch("/api/result", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(score),
-    });
-
-    return await response.json();
-  };
-
-  useEffect(() => {
-    scoreToDB();
-  }, [score]);
-
   const value = {
     scoreHandler,
     score,

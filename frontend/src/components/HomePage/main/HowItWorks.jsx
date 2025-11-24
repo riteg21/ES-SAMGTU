@@ -13,7 +13,7 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 sm:gap-8 md:gap-6 lg:gap-8 xl:gap-12 mt-8 sm:mt-12 lg:mt-16">
+        <div className="flex flex-col md:flex-row justify-center items-stretch gap-1 sm:gap-2 md:gap-1 lg:gap-2 xl:gap-3 mt-3 sm:mt-8 lg:mt-8">
           <div className="flex flex-col items-center text-center max-w-xs mx-auto w-full p-4 sm:p-6">
             <div className="rounded-full bg-[#004282] text-white w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center font-bold mb-3 sm:mb-4 text-sm sm:text-base">
               1

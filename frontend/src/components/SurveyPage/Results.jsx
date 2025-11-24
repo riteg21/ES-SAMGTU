@@ -3,25 +3,12 @@ import { DirectionItem } from "../HomePage/main/Direct/DirectionItem";
 import { Link } from "react-router-dom";
 import { useScore } from "../../context/ScoreForResultsContext";
 
-const directionCodeMap = {
-  1: "01.03.02",
-  2: "09.03.01",
-  3: "09.03.02",
-  4: "09.03.03",
-  5: "09.03.04",
-  6: "10.03.01",
-  7: "11.03.01",
-  8: "12.03.01",
-  9: "15.03.04",
-  10: "27.03.03",
-  11: "27.03.04",
-};
-
 export const Results = () => {
   const { score } = useScore();
 
   const [directions, setDirections] = useState([]);
   const [error, setError] = useState(false);
+  console.log("score:", score);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +23,7 @@ export const Results = () => {
     };
     fetchData();
   }, []);
+
   if (error) {
     return <Link to={"/404"} />;
   }
@@ -50,12 +38,12 @@ export const Results = () => {
 
   const topDirectionItems = useMemo(() => {
     return topDirections
-      .map((code) => {
-        const directionNumber = directionCodeMap[code];
-        return directions.find((item) => item.number === directionNumber);
+      .map((key) => {
+        return directions.find((item) => item.id === parseInt(key));
       })
       .filter((item) => item !== undefined);
-  }, [topDirections]);
+  }, [topDirections, directions]);
+
   console.log(topDirectionItems);
 
   return (

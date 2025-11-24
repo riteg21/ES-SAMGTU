@@ -55,9 +55,9 @@ export const Quiz = () => {
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    if (directions?.id) {
+    if (directions?.number) {
       const initialScores = {};
-      Object.keys(directions.id).forEach((key) => {
+      Object.keys(directions.number).forEach((key) => {
         initialScores[key] = 0;
       });
       setScores(initialScores);

@@ -2,124 +2,127 @@ export const Footer = () => {
   return (
     <footer className="bg-white mt-auto">
       <div className="mx-auto w-full max-w-screen-xl">
-        <div className="px-4 py-6 lg:py-8">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-8">
-            <div className="flex justify-center lg:justify-center">
+        <div className="px-7 py-6 lg:py-8">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
+            <div className="flex justify-center lg:justify-start">
               <img
                 src="/logo.svg"
                 alt="Логотип СамГТУ"
-                className="w-40 h-30 sm:w-34 sm:h-18 lg:w-40 lg:h-20 lg: me-10"
+                className="w-40 h-30 sm:w-34 sm:h-18 lg:w-40 lg:h-20 lg:me-10"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-4 flex-1">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-6 md:gap-8 ">
               <div>
-                <ul className="text-gray-500 font-semibold">
+                <ul className="text-gray-500 font-semibold text-sm sm:text-base">
                   <li className="mb-4">
                     443100, Самара <br />
                     Ул. Молодогвардейская, 244, главный корпус
                   </li>
                   <li className="mb-4">8 (846) 278-43-11</li>
                   <li className="mb-4">
-                    <a href="#" className=" text-blue-600 hover:text-blue-800">
+                    <a href="#" className="text-blue-600 hover:text-blue-800">
                       rector@samgtu.ru
                     </a>
                   </li>
                 </ul>
               </div>
+
               <div>
-                <ul className="text-gray-500 font-semibold">
+                <ul className="text-gray-500 font-semibold text-sm sm:text-base">
                   <li className="mb-4">
-                    <h3 className="text-gray-700 font-bold">
+                    <h3 className="text-gray-700 font-bold mb-1">
                       Приемная комиссия
                     </h3>
                     +7 (800) 302-17-71
                   </li>
                   <li className="mb-4">
-                    <h3 className="text-gray-700 font-bold">
+                    <h3 className="text-gray-700 font-bold mb-1">
                       Приемная комиссия
                     </h3>
-                    <h3 className="text-gray-700 font-bold">
+                    <h3 className="text-gray-700 font-bold mb-1">
                       Заочное обучение
                     </h3>
-                    + 7 (846) 279-03-58
+                    +7 (846) 279-03-58
                   </li>
                 </ul>
               </div>
+
               <div>
-                <ul className="text-gray-500 font-bold">
-                  <li className="mb-4">
+                <ul className="text-gray-500 font-bold text-sm sm:text-base">
+                  <li className="mb-3">
                     <a
                       href="https://priem.samgtu.ru/"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       ПОСТУПАЮЩИМ
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://samgtu.ru/students/students"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       ОБУЧАЮЩИМСЯ
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://samgtu.ru/business/business"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       БИЗНЕСУ
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://samgtu.ru/science/science"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       НАУКА
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://samgtu.ru/contacts"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       КОНТАКТЫ
                     </a>
                   </li>
                 </ul>
               </div>
+
               <div>
-                <ul className="text-gray-500 font-semibold">
-                  <li className="mb-4">
+                <ul className="text-gray-500 font-semibold text-sm sm:text-base">
+                  <li className="mb-3">
                     <a
                       href="https://samgtu.ru/bachelors/bachelors-dormitory"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       Общежития
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://military.samgtu.ru/"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
-                      Военнный учебный центр
+                      Военный учебный центр
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://samgtu.ru/admission/admission-faq"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       Часто задаваемые вопросы
                     </a>
                   </li>
-                  <li className="mb-4">
+                  <li className="mb-3">
                     <a
                       href="https://mail.samgtu.ru/"
-                      className="hover:text-blue-800"
+                      className="hover:text-blue-800 block"
                     >
                       Почта
                     </a>

@@ -4,7 +4,7 @@ export const LinkToSurvey = () => {
   return (
     <Link
       to={"/survey"}
-      className="inline-flex items-center justify-center gap-2 text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-lg px-12 py-5"
+      className="inline-flex items-center justify-center gap-2 text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-3xl px-12 py-5"
     >
       Начать опросник
       <svg

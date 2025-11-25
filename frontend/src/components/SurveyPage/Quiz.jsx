@@ -9,32 +9,33 @@ export const Quiz = () => {
   const [directions, setDirections] = useState(null);
   const [error, setError] = useState(false);
 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [scores, setScores] = useState({});
+  const [isCompleted, setIsCompleted] = useState(false);
+
   const navigateToResult = useNavigate();
   const { scoreHandler, score } = useScore();
 
   useEffect(() => {
     const FetchAllQuestions = async () => {
       try {
-        const allQuestions = [];
-        let page = 1;
-        let totalPages = 15;
-        while (page < totalPages) {
-          const response = await fetch(`/api/question?questionNumber=${page}`);
-          if (!response.ok) throw new Error("Failed to fetch data");
-          const data = await response.json();
+        const response = await fetch(
+          `/api/question?questionNumber=${currentQuestion + 1}`
+        );
+        if (!response.ok) throw new Error("Failed to fetch data");
+        const data = await response.json();
 
-          allQuestions.push(...data.content);
-          totalPages = data.totalPages;
-          page++;
-        }
-        setQuizData(allQuestions);
+        setQuizData((prevData) => {
+          const newData = [...prevData];
+          newData[currentQuestion] = data.content[0];
+          return newData;
+        });
       } catch (error) {
         setError(true);
       }
     };
-
     FetchAllQuestions();
-  }, []);
+  }, [currentQuestion]);
 
   useEffect(() => {
     const FetchDataDirections = async () => {
@@ -49,10 +50,6 @@ export const Quiz = () => {
     };
     FetchDataDirections();
   }, []);
-
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState({});
-  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     if (directions?.number) {
@@ -81,7 +78,7 @@ export const Quiz = () => {
 
     console.log(scores);
 
-    if (currentQuestion < questions.length - 1) {
+    if (currentQuestion < 14) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setIsCompleted(true);

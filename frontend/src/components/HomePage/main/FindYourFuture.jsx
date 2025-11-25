@@ -6,9 +6,9 @@ export const FindYourFuture = () => {
       <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8">
         <div className="flex-1 w-full">
           <div>
-            <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-none tracking-tight text-gray-800">
+            <h2 className="mb-4 text-4xl sm:text-5xl md:text-5xl lg:text-5xl font-bold leading-none tracking-tight text-gray-800">
               Найди свое <span>будущее</span>{" "}
-            </h1>
+            </h2>
             <p className="text-base sm:text-lg font-light text-gray-500 lg:text-xl">
               Пройди интеллектуальный опросник и узнай, какое{" "}
               <br className="hidden sm:block" />
@@ -47,7 +47,7 @@ export const FindYourFuture = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 sm:mt-16 lg:mt-20 mb-4 sm:mb-6">
+          <div className="mt-12 sm:mt-12 lg:mt-20 mb-4 sm:mb-6 ms-16 sm:ms-10 lg:ms-0">
             <LinkToSurvey />
           </div>
           <h6 className="text-gray-500 text-sm sm:text-base text-center sm:text-left">

@@ -77,11 +77,11 @@ export const Directions = () => {
   return (
     <div className="bg-white py-20 sm:py-30 lg:py-40 mt-10 sm:mt-15 lg:mt-20 px-4 sm:px-6 lg:px-40">
       <div className="flex flex-col items-center justify-center text-center">
-        <h1 className="mb-3 sm:mb-4 text-xl sm:text-2xl lg:text-3xl font-bold leading-none tracking-tight text-gray-800">
-          Какие направление есть?
-        </h1>
-        <p className="mb-4 sm:mb-6 text-base sm:text-lg lg:text-xl font-normal text-gray-500 sm:px-8 lg:px-16 xl:px-32">
-          В нашем вузе найдуться специальности на все случаи жизни
+        <h2 className="mb-3 sm:mb-4 text-4xl sm:text-2xl lg:text-5xl font-bold leading-none tracking-tight text-gray-800">
+          Какие направления есть?
+        </h2>
+        <p className="mb-4 sm:mb-10 text-base sm:text-lg lg:text-xl font-normal text-gray-500 sm:px-8 lg:px-16 xl:px-32">
+          В нашем вузе найдутся специальности на все случаи жизни
         </p>
       </div>
 

@@ -5,9 +5,9 @@ export const HowItWorks = () => {
     <div className="px-4 sm:px-6 lg:px-8 xl:px-24 2xl:px-32">
       <div className="pt-8 sm:pt-12 lg:pt-16 xl:pt-20 text-center pb-8 sm:pb-12 lg:pb-16 flex flex-col">
         <div>
-          <h1 className="mb-3 sm:mb-4 text-xl sm:text-2xl lg:text-3xl font-bold leading-none tracking-tight text-gray-800">
+          <h2 className="mb-3 sm:mb-4 text-4xl sm:text-3xl lg:text-5xl font-bold leading-none tracking-tight text-gray-800">
             Как это работает?
-          </h1>
+          </h2>
           <p className="mb-4 sm:mb-6 text-base sm:text-lg lg:text-xl font-normal text-gray-500 sm:px-8 lg:px-16 xl:px-32">
             Простой и понятный процесс, который поможет определиться с будущим
           </p>

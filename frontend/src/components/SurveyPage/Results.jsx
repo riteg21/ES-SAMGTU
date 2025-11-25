@@ -57,9 +57,9 @@ export const Results = () => {
           />
         </div>
         <h2
-          className="text-xl font-bold text-gray-700 mb-3 
-               sm:text-2xl 
-               lg:text-3xl lg:mb-10"
+          className="text-2xl font-bold text-gray-700 mb-3 
+               sm:text-3xl 
+               lg:text-4xl lg:mb-10"
         >
           Поздравляем!
         </h2>

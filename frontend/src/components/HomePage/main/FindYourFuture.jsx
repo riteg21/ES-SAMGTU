@@ -47,7 +47,7 @@ export const FindYourFuture = () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 sm:mt-12 lg:mt-20 mb-4 sm:mb-6 ms-16 sm:ms-10 lg:ms-0">
+          <div className="mt-12 sm:mt-12 lg:mt-20 mb-4 sm:mb-6 flex justify-center sm:justify-start">
             <LinkToSurvey />
           </div>
           <h6 className="text-gray-500 text-sm sm:text-base text-center sm:text-left">

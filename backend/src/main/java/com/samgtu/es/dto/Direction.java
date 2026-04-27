@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class Directions {
+public class Direction {
     private Long id;
     private String name;
     private String number;

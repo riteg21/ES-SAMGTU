@@ -11,19 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.samgtu.es.dto.question.QuestionDto;
 import com.samgtu.es.service.QuestionService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/question")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class QuestionsController {
     
-    private QuestionService questionService;
+    private final QuestionService questionService;
 
     @GetMapping
-    public ResponseEntity<Page<QuestionDto>> getQuestion(@RequestParam(defaultValue = "1") int questionNumber) {
+    public ResponseEntity<Page<QuestionDto>> getQuestion(
+            @RequestParam(defaultValue = "1") int questionNumber,
+            @RequestParam String group) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(questionService.getQuestion(questionNumber));
+                .body(questionService.getQuestion(group, questionNumber));
     }
 }

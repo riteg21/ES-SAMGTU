@@ -14,24 +14,25 @@ import org.springframework.stereotype.Service;
 
 import com.samgtu.es.dto.question.AnswersDto;
 import com.samgtu.es.dto.question.QuestionDto;
-import com.samgtu.es.googlesheets.TableSheets;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class QuestionService {
 
     private final TableSheets tableSheets;
 
-    public Page<QuestionDto> getQuestion(int questionNumber) {
-        log.info("Fetching question: {}", questionNumber);
+    public Page<QuestionDto> getQuestion(String group, Integer questionNumber) {
+        String pageToFetch = "Вопрос_" + group + "_" + questionNumber.toString();
+        log.info("Fetching page: {}", pageToFetch);
         Pageable page = PageRequest.of(questionNumber, 1, Sort.by("id").ascending());
 
-        List<List<Object>> rows = tableSheets.readData("Вопрос_" + questionNumber, "B6:ZZ");
-        String question = toStringSafe(tableSheets.readData("Вопрос_" + questionNumber, "B3").get(0).get(0));
+        List<List<Object>> rows = tableSheets.readData(pageToFetch, "B3:ZZ");
+        String question = toStringSafe(rows.get(0).get(0));
+        rows = rows.stream().skip(3).toList();
 
         List<Long> directionIds = rows.get(0).stream()
             .skip(1)
@@ -65,7 +66,7 @@ public class QuestionService {
                 .answers(lAnswersDtos)
             .build()), 
             page, 
-            tableSheets.countSheetsStartingWith("Вопрос_"));
+            tableSheets.countSheetsStartingWith("Вопрос_" + group));
     }
 
     private String toStringSafe(Object obj) {

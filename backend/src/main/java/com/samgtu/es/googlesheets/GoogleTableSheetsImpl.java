@@ -8,14 +8,12 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.samgtu.es.exception.GoogleSheetsException;
+import com.samgtu.es.service.TableSheets;
 
 import java.io.FileInputStream;
 import java.util.Collections;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 public class GoogleTableSheetsImpl implements TableSheets {
 
     private final String spreadsheetId;
@@ -32,11 +30,11 @@ public class GoogleTableSheetsImpl implements TableSheets {
                 .createScoped(Collections.singleton("https://www.googleapis.com/auth/spreadsheets"));
 
         return new Sheets.Builder(
-                GoogleNetHttpTransport.newTrustedTransport(),
-                GsonFactory.getDefaultInstance(),
-                new HttpCredentialsAdapter(credentials))
+                    GoogleNetHttpTransport.newTrustedTransport(),
+                    GsonFactory.getDefaultInstance(),
+                    new HttpCredentialsAdapter(credentials))
                 .setApplicationName("es-samgtu-app")
-                .build();
+            .build();
     }
 
     public String columnNumberToLetter(int columnNumber) {
@@ -79,7 +77,7 @@ public class GoogleTableSheetsImpl implements TableSheets {
         try {
             ValueRange response = sheetsService.spreadsheets()
                     .values()
-                    .get(spreadsheetId, titleSheet + "!" + regionRead)
+                    .get(spreadsheetId, "'" + titleSheet + "'!" + regionRead)
                 .execute();
             return response.getValues();
         } catch (Exception e) {

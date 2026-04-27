@@ -5,20 +5,19 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.samgtu.es.dto.Directions;
-import com.samgtu.es.googlesheets.TableSheets;
+import com.samgtu.es.dto.Direction;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DirectionsService {
 
     private final TableSheets tableSheets;
 
-    public List<Directions> getAllDirectionsScores()  {
+    public List<Direction> getAllDirectionsScores()  {
         log.info("Fetch all directions");
         List<List<Object>> rows = tableSheets.readData("Направления", "B3:F");
 
@@ -28,8 +27,8 @@ public class DirectionsService {
             .collect(Collectors.toList());
     }
 
-    private Directions mapRowToDirection(List<Object> row) {
-        return Directions.builder()
+    private Direction mapRowToDirection(List<Object> row) {
+        return Direction.builder()
                 .id(Long.valueOf(toStringSafe(row.get(0))))
                 .name(toStringSafe(row.get(1)))
                 .number(toStringSafe(row.get(2)))

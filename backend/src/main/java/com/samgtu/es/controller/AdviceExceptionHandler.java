@@ -19,7 +19,7 @@ public class AdviceExceptionHandler {
     public String googleSheetsException(GoogleSheetsException ex)
     {
         log.error("GoogleSheets error: {}", ex.getMessage());
-        return ex.getMessage();
+        return "Bad requset";
     }
 
     @ExceptionHandler(NotFoundException.class)

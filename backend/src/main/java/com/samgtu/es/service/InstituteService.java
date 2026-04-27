@@ -3,6 +3,7 @@ package com.samgtu.es.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.samgtu.es.dto.Institute;
@@ -17,6 +18,7 @@ public class InstituteService {
 
     private final TableSheets tableSheets;
 
+    @Cacheable("institutions")
     public List<Institute> getAllInstitutions() {
         log.info("Fetch all institutions");
         List<List<Object>> rows = tableSheets.readData("Институты", "B3:D");

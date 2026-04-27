@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +26,7 @@ public class QuestionService {
 
     private final TableSheets tableSheets;
 
+    @Cacheable(value = "questions", key = "{#group, #questionNumber}")
     public Page<QuestionDto> getQuestion(String group, Integer questionNumber) {
         String pageToFetch = "Вопрос_" + group + "_" + questionNumber.toString();
         log.info("Fetching page: {}", pageToFetch);

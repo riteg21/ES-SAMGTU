@@ -3,6 +3,7 @@ package com.samgtu.es.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.samgtu.es.dto.Direction;
@@ -17,6 +18,7 @@ public class DirectionsService {
 
     private final TableSheets tableSheets;
 
+    @Cacheable("directions")
     public List<Direction> getAllDirectionsScores()  {
         log.info("Fetch all directions");
         List<List<Object>> rows = tableSheets.readData("Направления", "B3:F");

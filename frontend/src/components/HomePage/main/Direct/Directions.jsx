@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 
 export const Directions = () => {
   const [directions, setDirections] = useState([]);
+  const [filteredDirections, setFilteredDirections] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,6 +15,7 @@ export const Directions = () => {
         if (!response.ok) throw new Error("Failed to response");
         const data = await response.json();
         setDirections(data);
+        setFilteredDirections(data);
       } catch (err) {
         console.error("Error fetching directions:", err);
       } finally {
@@ -22,8 +25,24 @@ export const Directions = () => {
     fetchData();
   }, []);
 
+  const filterDirections = (institute) => {
+    setActiveFilter(institute);
+    if (institute === "all") {
+      setFilteredDirections(directions);
+    } else if (institute === "iait") {
+      const iaitDirections = directions.filter((s) => s.id <= 11);
+      setFilteredDirections(iaitDirections);
+    } else if (institute === "ingt") {
+      const ingtDirections = directions.filter((s) => s.id > 11);
+      setFilteredDirections(ingtDirections);
+    }
+  };
+
   const renderSkeletons = () => {
-    return Array.from({ length: 11 }).map((_, index) => (
+    const skeletonCount =
+      filteredDirections.length > 0 ? filteredDirections.length : 8;
+
+    return Array.from({ length: skeletonCount }).map((_, index) => (
       <div
         key={`skeleton-${index}`}
         className="w-full max-w-xs sm:max-w-sm lg:w-80 mx-auto sm:mx-2 lg:mx-4 bg-white rounded-lg sm:rounded-xl lg:rounded-2xl shadow-md sm:shadow-lg overflow-hidden border border-gray-100 animate-pulse"
@@ -85,11 +104,45 @@ export const Directions = () => {
         </p>
       </div>
 
+      <div className="flex justify-center gap-4 mb-8 sm:mb-12 sm:gap-3">
+        <button
+          onClick={() => filterDirections("all")}
+          className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+            activeFilter === "all"
+              ? "bg-gray-800 text-white shadow-lg scale-105"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
+          }`}
+        >
+          Все направления
+        </button>
+        <button
+          onClick={() => filterDirections("iait")}
+          className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+            activeFilter === "iait"
+              ? "bg-blue-600 text-white shadow-lg scale-105"
+              : "bg-blue-50 text-blue-700 hover:bg-blue-100 hover:scale-105"
+          }`}
+        >
+          ИАИТ
+        </button>
+        <button
+          onClick={() => filterDirections("ingt")}
+          className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+            activeFilter === "ingt"
+              ? "bg-orange-600 text-white shadow-lg scale-105"
+              : "bg-orange-50 text-orange-700 hover:bg-orange-100 hover:scale-105"
+          }`}
+        >
+          ИНГТ
+        </button>
+      </div>
+
       <div className="flex flex-wrap justify-center gap-y-4 sm:gap-y-3 lg:gap-y-8 -mx-2 sm:-mx-10 lg:-mx-10">
         {loading
           ? renderSkeletons()
-          : directions.map((s) => (
+          : filteredDirections.map((s) => (
               <DirectionItem
+                key={s.id}
                 id={s.id}
                 image={s.imageURL}
                 name={s.name}

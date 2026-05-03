@@ -12,7 +12,7 @@ export const FindYourFuture = () => {
             <p className="text-base sm:text-lg font-light text-gray-500 lg:text-xl">
               Пройди интеллектуальный опросник и узнай, какое{" "}
               <br className="hidden sm:block" />
-              направление обучения в ИАИТ идеально подходит именно{" "}
+              направление обучения в ИАИТ и ИНГТ идеально подходит именно{" "}
               <br className="hidden sm:block" />
               тебе. На основе твоих интересов, способностей и целей{" "}
               <br className="hidden sm:block" /> мы подберем оптимальный путь к
